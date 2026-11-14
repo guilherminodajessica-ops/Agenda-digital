@@ -137,7 +137,25 @@ export function AboutPage() {
           <FlowAnimation />
         </Section>
 
-        <Section id="processo" n="3" title="Processo" icon="list">
+        <Section id="video" n="3" title="Tutorial em vídeo: como usar a agenda" icon="play">
+          <p>
+            Assista à demonstração narrada das funções principais do protótipo: escolher um perfil, lançar compromissos,
+            consultar o calendário da turma e conhecer a área da administração. O vídeo usa capturas da interface do site.
+          </p>
+          <video
+            controls
+            playsInline
+            preload="metadata"
+            className="aspect-video w-full rounded-2xl bg-navy-900 shadow-sm"
+            src={PROJECT.explainVideoUrl}
+            aria-label="Tutorial narrado de utilização da Agenda Digital Escolar"
+          >
+            Seu navegador não suporta a reprodução deste vídeo.
+          </video>
+          <p className="text-xs text-navy-800/65">Duração: aproximadamente 1 minuto. O vídeo demonstra a versão de teste; as informações são fictícias.</p>
+        </Section>
+
+        <Section id="processo" n="4" title="Processo" icon="list">
           <ol className="list-decimal space-y-1.5 pl-5">
             <li>Definição do objetivo e das três áreas do site: aluno, professor e administração.</li>
             <li>Escolha das imagens de calendário usadas como referência visual (título do mês, cabeçalho azul-claro, linhas finas).</li>
@@ -165,7 +183,7 @@ export function AboutPage() {
           {PROJECT.equipment && <p><strong className="text-navy-900">Equipamento:</strong> {PROJECT.equipment}</p>}
         </Section>
 
-        <Section id="resultado" n="4" title="Resultado" icon="check">
+        <Section id="resultado" n="5" title="Resultado" icon="check">
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl bg-emerald-50 p-4 ring-1 ring-inset ring-emerald-200">
               <p className="mb-2 font-bold text-emerald-800">Implementado</p>
@@ -190,7 +208,7 @@ export function AboutPage() {
           </div>
         </Section>
 
-        <Section id="historia" n="5" title="Da primeira página da Web a este site" block="Bloco 1A" icon="clock">
+        <Section id="historia" n="6" title="Da primeira página da Web a este site" block="Bloco 1A" icon="clock">
           <ol className="relative ml-2 space-y-3 border-l-2 border-line pl-5">
             {TIMELINE.map((t) => (
               <li key={t.year} className="relative">
@@ -202,7 +220,7 @@ export function AboutPage() {
           </ol>
         </Section>
 
-        <Section id="cores" n="6" title="As cores do site em hexadecimal, decimal e binário" block="Blocos 1B e 1D" icon="grid">
+        <Section id="cores" n="7" title="As cores do site em hexadecimal, decimal e binário" block="Blocos 1B e 1D" icon="grid">
           <p>
             Cada cor é guardada como três números de 8 bits (vermelho, verde e azul), de 0 a 255. O código hexadecimal
             escreve cada número com dois dígitos. Os valores abaixo são calculados pelo próprio site a partir do código
@@ -235,7 +253,7 @@ export function AboutPage() {
           </div>
         </Section>
 
-        <Section id="logica" n="7" title="Categorias e operadores lógicos" block="Bloco 3B" icon="filter">
+        <Section id="logica" n="8" title="Categorias e operadores lógicos" block="Bloco 3B" icon="filter">
           <p>Cada compromisso tem uma categoria (dado categórico): {CATEGORIES.map((c) => c.label).join(", ")}. O site decide o que mostrar com condições compostas:</p>
           <ul className="space-y-2">
             <li className="rounded-xl bg-paper p-3 font-mono text-[13px]">
@@ -251,7 +269,7 @@ export function AboutPage() {
           <p className="text-sm">Essas regras estão no arquivo <code>src/lib/event-rules.ts</code> do código-fonte.</p>
         </Section>
 
-        <Section id="dados" n="8" title="Dados em CSV e resumo em infográfico" block="Blocos 3C e 3D" icon="download">
+        <Section id="dados" n="9" title="Dados em CSV e resumo em infográfico" block="Blocos 3C e 3D" icon="download">
           {status !== "ready" ? (
             <LoadingState />
           ) : (
@@ -292,7 +310,7 @@ export function AboutPage() {
           )}
         </Section>
 
-        <Section id="ia" n="9" title="Uso de inteligência artificial e fontes" icon="info">
+        <Section id="ia" n="10" title="Uso de inteligência artificial e fontes" icon="info">
           <p data-testid="ai-declaration">
             <strong className="text-navy-900">Declaração:</strong> o código deste site foi gerado com o assistente de
             inteligência artificial Claude, da Anthropic, a partir da especificação escrita pelo autor, das imagens de

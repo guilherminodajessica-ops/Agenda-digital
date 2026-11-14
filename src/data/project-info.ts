@@ -11,9 +11,9 @@ export const PROJECT = {
   objective:
     "Criar um site de agenda escolar em que os professores lançam provas, trabalhos, atividades e projetos e os alunos de cada turma consultam essas datas em um único calendário.",
   /** Ex.: "Notebook X, processador Y, 8 GB de RAM, Windows 11". */
-  equipment: "",
+  equipment: "Notebook Lenovo LOQ; Intel Core i5-12450H (12ª geração); 16 GB DDR5; SSD NVMe; GPU dedicada NVIDIA GeForce RTX (modelo exato não confirmado).",
   /** Endereço do vídeo de explicação (YouTube "embed" ou arquivo .mp4). Vazio = ainda não adicionado. */
-  explainVideoUrl: "",
+  explainVideoUrl: "/videos/agenda-digital-escolar-tutorial.mp4",
 };
 
 /** Versões dos programas usados para gerar e testar o arquivo do site. */
