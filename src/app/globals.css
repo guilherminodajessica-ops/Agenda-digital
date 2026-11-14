@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+/*
+ * Paleta: azul-marinho (texto e botões), azul (ações e destaques),
+ * âmbar (único acento quente) e cinza-azulado claro (fundo).
+ * A grade do calendário segue as imagens de referência.
+ */
+@theme {
+  --font-sans: "Inter", "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+
+  --color-navy-950: #0b1530;
+  --color-navy-900: #14213d;
+  --color-navy-800: #24365e;
+  --color-head: #e4eeff;   /* cabeçalho dos dias da semana */
+  --color-line: #b9d1f5;   /* linhas da grade */
+  --color-paper: #f4f6fb;  /* fundo geral */
+  --color-accent: #fca311; /* acento */
+  --color-accent-soft: #fff3da;
+
+  /* Escala de azul usada nas ações (substitui o "sky" padrão). */
+  --color-sky-50: #eef4ff;
+  --color-sky-100: #dde9ff;
+  --color-sky-200: #bfd6ff;
+  --color-sky-300: #93b9fb;
+  --color-sky-400: #5f95f3;
+  --color-sky-500: #3b78ea;
+  --color-sky-600: #275fd3;
+  --color-sky-700: #1f4cab;
+  --color-sky-800: #1b3f89;
+
+  --animate-fade-in: fade-in 180ms ease-out both;
+  --animate-sheet-in: sheet-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-toast-in: toast-in 220ms ease-out both;
+  --animate-rise: rise 260ms ease-out both;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes sheet-in {
+    from { opacity: 0; transform: translateY(16px) scale(0.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes toast-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-paper font-sans text-navy-900 antialiased;
+    transition: background-color 250ms ease;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/*
+ * MODO EXPLICAÇÃO: troca as variáveis de cor do tema (tons de violeta)
+ * e destaca os elementos que possuem explicação (atributo data-explain).
+ */
+html.explain-mode {
+  --color-navy-950: #1c0f3f;
+  --color-navy-900: #33197a;
+  --color-navy-800: #4a2f9c;
+  --color-head: #ebe2ff;
+  --color-line: #cdbbf7;
+  --color-paper: #f7f3ff;
+  --color-accent: #ff7a59;
+  --color-accent-soft: #ffe9e2;
+  --color-sky-50: #f3eeff;
+  --color-sky-100: #e7dcff;
+  --color-sky-200: #d3c0ff;
+  --color-sky-300: #b79bfb;
+  --color-sky-400: #9a77f2;
+  --color-sky-500: #7f57e6;
+  --color-sky-600: #6841cf;
+  --color-sky-700: #5433ab;
+  --color-sky-800: #432a88;
+}
+html.explain-mode [data-explain] {
+  cursor: help;
+}
+html.explain-mode [data-explain]:hover {
+  outline: 2px dashed var(--color-accent);
+  outline-offset: 3px;
+}
+
+@layer components {
+  .select-chevron {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2324365e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Animação da página "Sobre o projeto": o compromisso sai do professor e chega ao calendário. */
+  .flow-chip {
+    animation: flow-chip 5s ease-in-out infinite;
+  }
+  .flow-cell {
+    animation: flow-cell 5s ease-in-out infinite;
+  }
+  .flow-pulse {
+    animation: flow-pulse 5s ease-in-out infinite;
+  }
+  .ring-progress {
+    transition: stroke-dashoffset 700ms ease;
+  }
+}
+
+@keyframes flow-chip {
+  0%, 12% { left: 6%; opacity: 0; transform: scale(0.8); }
+  20% { left: 6%; opacity: 1; transform: scale(1); }
+  55% { left: 72%; opacity: 1; transform: scale(1); }
+  66%, 100% { left: 72%; opacity: 0; transform: scale(0.8); }
+}
+@keyframes flow-cell {
+  0%, 58% { background-color: transparent; }
+  66%, 92% { background-color: var(--color-accent-soft); }
+  100% { background-color: transparent; }
+}
+@keyframes flow-pulse {
+  0%, 8% { transform: scale(1); }
+  14% { transform: scale(1.06); }
+  20%, 100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}
